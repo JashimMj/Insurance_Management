@@ -5,7 +5,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index,name='index'),
-    path('test/', views.maindashboardV,name='test'),
+    path('maindashboard/', views.maindashboardV,name='maindashboard'),
+    path('admindashboard/', views.admindashboardV,name='admindashboard'),
+    path('company/and/branch/', views.companyandbranchV,name='companyandbranch'),
+    path('company/and/branch/save', views.CompanySaveV,name='companyandbranchsave'),
 
 
 
