@@ -9,6 +9,9 @@ urlpatterns = [
     path('admindashboard/', views.admindashboardV,name='admindashboard'),
     path('company/and/branch/', views.companyandbranchV,name='companyandbranch'),
     path('company/and/branch/save', views.CompanySaveV,name='companyandbranchsave'),
+    path('umpapi/', views.UMP_APIV,name='umpapi'),
+    path('umpapi/ss/', views.UMP_APIsV,name='umpapiss'),
+
 
 
 
