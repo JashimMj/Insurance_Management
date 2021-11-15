@@ -1,5 +1,9 @@
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+      {{ message }}
+</div>
+{%endif%}
 {%for (mrSerialNumber, officeBranchCode, officeBranchName, mrNumber, mrDate, classInsurance, insuredName, insuredAddress, insuredMobile, insuredEmail, modeOfPayment, paymentDetail, coverNoteNumber, policyNumber, addendumNumber, endorsementNumber, netPremium, vat, stamp, others, totalPremium, chequeDrawnOn, chequeDate, depositDate, depositedToBank, depositedToBranch, depositedToAccountNumber, mfs, mfsAccountNumber, isCoInsurance, isLeader, financingBankName, financingBankAddress, financingBankEmail, financingBankMobile, isMultiDocument, multiDocuments, currency, leaderDocument, paymentReceivedFrom, serviceCharge, coInsurerPremiumAmount, bankGuaranteeNumber, requeston, responseon, response, mrURL, umpStatus, depositStatus) in myresults%}
-
 
     <tr>
 <th scope="row" >{{forloop.counter}}</th>

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -21,5 +21,21 @@ class BranchInformationM(models.Model):
             urls = self.BranchLogo.url
         except:
             urls = ''
+        return urls
+
+class UserProfileM(models.Model):
+    id=models.AutoField(primary_key=True)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True)
+    Phone=models.CharField(max_length=100,null=True,blank=True)
+    Present_Address=models.TextField(max_length=255,null=True,blank=True)
+    Permanant_Address=models.TextField(max_length=255,null=True,blank=True)
+    Image=models.ImageField(upload_to='User_image',null=True,blank=True)
+    objects=models.Manager()
+
+    def uimages(self):
+        try:
+            urls=self.Image.url
+        except:
+            urls=''
         return urls
 

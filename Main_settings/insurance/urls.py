@@ -11,6 +11,9 @@ urlpatterns = [
     path('company/and/branch/save', views.CompanySaveV,name='companyandbranchsave'),
     path('umpapi/', views.UMP_APIV,name='umpapi'),
     path('umpapi/ss/', views.UMP_APIsV,name='umpapiss'),
+    path('umpapi/sended/', views.UMP_APIsendeV,name='umpapissended'),
+    path('umpapi/previous/report', views.previouslysende,name='umpsedp'),
+    path('umpapi/previous/report/PDF/', views.previouslysendePDFV,name='umpsedPDF'),
 
 
 

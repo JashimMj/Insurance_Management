@@ -1,19 +1,22 @@
 {%extends 'dashboard.html'%}
 {%block contant%}
 {%load static%}
+<div class="container-fluid">
 <div class="row justify-content-center">
 
     <div class="col-lg-4 col-md-12">
-        <a href="{%url 'admindashboard'%}">
+        <a href="{%url 'umpapi'%}">
             <div class="white-box analytics-info">
-                <h3 class="box-title">Admin</h3>
+                <h3 class="box-title">MR SEND DATA TO IDRA</h3>
                 <ul class="list-inline two-part d-flex align-items-center mb-0">
                     <li>
                         <div id="sparklinedash14">
-                             <img src="{%static 'image/admin.jpg'%}" alt="" class="img-fluid">
+                             <img src="{%static 'image/send.jpg'%}" alt="" class="img-fluid">
                         </div>
                     </li>
-                    <li class="ms-auto"><span class="counter text-success">659</span></li>
+                    {%for x in send%}
+                    <li class="ms-auto"><span class="counter text-success">{{x}}</span></li>
+                    {%endfor%}
                 </ul>
             </div>
         </a>
@@ -21,16 +24,18 @@
 
 
     <div class="col-lg-4 col-md-12">
-        <a href="">
+        <a href="{%url 'umpapissended'%}">
             <div class="white-box analytics-info">
-                <h3 class="box-title">Under Writing</h3>
+                <h3 class="box-title">MR IDRA DATA SENDED PREVIOUSLY </h3>
                 <ul class="list-inline two-part d-flex align-items-center mb-0">
                     <li>
                         <div id="sparklinedash15">
-                             <img src="{%static 'image/under writing.png'%}" alt="" class="img-fluid">
+                             <img src="{%static 'image/previos.jpg'%}" alt="" class="img-fluid">
                         </div>
                     </li>
-                    <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                    {%for x in previously%}
+                    <li class="ms-auto"><span class="counter text-purple">{{x}}</span></li>
+                    {%endfor%}
                 </ul>
             </div>
         </a>
@@ -240,6 +245,6 @@
             </div>
         </a>
     </div>
-
+</div>
 </div>
 {%endblock%}
