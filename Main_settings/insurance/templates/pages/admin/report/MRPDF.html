@@ -34,7 +34,7 @@
 
     <style>
 @page {
-   size: 16in 8in landscape;
+   size: 14in 8.5in landscape;
    padding:5px;
 }
 
@@ -44,6 +44,7 @@
   margin:0px auto;
 }
 table {
+
   table-layout: fixed;
   width: 100%
 }
@@ -65,6 +66,7 @@ padding-top:10px;
 td{
 white-space: normal;
 word-break: break-all;
+font-size:.8rem;
 }
 
 
@@ -100,7 +102,6 @@ word-break: break-all;
       <th scope="col">Stamp</th>
       <th scope="col">Others</th>
       <th scope="col">Gross</th>
-      <th scope="col">MR URL</th>
 
 
 
@@ -109,24 +110,23 @@ word-break: break-all;
 
 {%for (mrSerialNumber, officeBranchCode, officeBranchName, mrNumber, mrDate, classInsurance, insuredName, insuredAddress, insuredMobile, insuredEmail, modeOfPayment, paymentDetail, coverNoteNumber, policyNumber, addendumNumber, endorsementNumber, netPremium, vat, stamp, others, totalPremium, chequeDrawnOn, chequeDate, depositDate, depositedToBank, depositedToBranch, depositedToAccountNumber, mfs, mfsAccountNumber, isCoInsurance, isLeader, financingBankName, financingBankAddress, financingBankEmail, financingBankMobile, isMultiDocument, multiDocuments, currency, leaderDocument, paymentReceivedFrom, serviceCharge, coInsurerPremiumAmount, bankGuaranteeNumber, requeston, responseon, response, mrURL, umpStatus, depositStatus) in myresults%}
     <tr>
-        <th scope="row" >{{forloop.counter}}</th>
-      <td>{{officeBranchCode}}</td>
+        <th scope="row" width="30">{{forloop.counter}}</th>
+      <td width="30">{{officeBranchCode}}</td>
       <td>{{officeBranchName}}</td>
       <td>{{mrNumber}}</td>
       <td>{{mrDate}}</td>
       <td>{{classInsurance}}</td>
       <td>{{insuredName}}</td>
       <td>{{modeOfPayment}}</td>
-      <td>{{coverNoteNumber}}</td>
-      <td>{{policyNumber}}</td>
-      <td>{{addendumNumber}}</td>
-      <td>{{endorsementNumber}}</td>
+      <td width="110">{{coverNoteNumber}}</td>
+      <td width="100">{{policyNumber}}</td>
+      <td width="100">{{addendumNumber}}</td>
+      <td width="100">{{endorsementNumber}}</td>
       <td>{{netPremium}}</td>
       <td>{{vat}}</td>
       <td>{{stamp}}</td>
       <td>{{others}}</td>
       <td>{{totalPremium}}</td>
-      <td><a href="{{mrURL}}" target="_blank">{{mrURL}}</a></td>
 
 
     </tr>

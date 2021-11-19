@@ -28,7 +28,7 @@ px
                     <!-- Logo -->
                     <!-- ============================================================== -->
                      {%for x in companyName%}
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="{%url 'index'%}">
                         <!-- Logo icon -->
                         <b class="logo-icon" style="text-align:center;padding:0;margin:0;">
                             <!-- Dark Logo icon -->
@@ -36,7 +36,7 @@ px
                         </b>
 
                     </a>
-                    <span><b style="padding:0;margin:0;">Paramount Insurance Company ltd.</b></span>
+                    <span><b style="padding:0;margin:0;">{{x.Company_Name}}</b></span>
 
                     {%endfor%}
                     <!-- ============================================================== -->
@@ -78,6 +78,9 @@ px
                                 <img src="{{x.uimages}}" alt="user-img" width="36"
                                     class="img-circle"><span class="text-white font-medium">{{x.user.username}}</span></a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li style="padding-right:10px;"><a href="{%url 'logout'%}" class="btn btn-outline-danger">Logout</a></li>
+                        {%endif%}
                         {%endfor%}
                         <!-- ============================================================== -->
                         <!-- User profile and search -->

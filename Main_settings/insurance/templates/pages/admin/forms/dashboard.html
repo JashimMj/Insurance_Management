@@ -1,6 +1,17 @@
 {%extends 'dashboard.html'%}
 {%block contant%}
 {%load static%}
+    <style>
+        div.abc {
+        margin: 4px, 4px;
+        padding: 4px;
+<!--        background-color: #08c708;-->
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    </style>
 <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
@@ -21,18 +32,30 @@
                                         <label class="col-md-12 p-0">MR From Date</label>
                                         <div class="col-md-6 border-bottom p-0">
                                             <input type="date" placeholder="From Date"
-                                                class="form-control p-0 border-0" name="fdate"> </div>
+                                                class="form-control p-0 border-0" name="fdate" required> </div>
                                     </div>
                                     <div class="form-group col-mb-6">
                                         <label class="col-md-6 p-0">MR TO Date</label>
                                         <div class="col-md-6 border-bottom p-0">
                                             <input type="date" placeholder="To Date"
-                                                class="form-control p-0 border-0" name="tdate"> </div>
+                                                class="form-control p-0 border-0" name="tdate" required> </div>
+                                    </div>
+
+
+                                     <div class="form-group col-mb-6">
+                                        <label class="col-md-6 p-0">MR Number</label>
+                                        <div class="col-md-6 border-bottom p-0">
+                                            <input type="text" placeholder="MR NUMBER"
+                                                class="form-control p-0 border-0" name="mrno"> </div>
                                     </div>
                                     </div>
                                     <div>
                                         <button type="submit" class="btn btn-success"><i class="fa fa-print" aria-hidden="true" > Print</i></button>
-                                        <button class="btn btn-success" hx-post="{%url 'umpsedp'%}" hx-target="#abc"  hx-encoding="multipart/form-data" >Submit</button>
+                                        <button class="btn btn-success" hx-post="{%url 'umpsedp'%}" hx-target=".abc"  hx-encoding="multipart/form-data" >Submit</button>
+                                        <button class="btn btn-success" hx-post="{%url 'mrnoserach'%}" hx-target=".abc"  hx-encoding="multipart/form-data" ><i class="fa fa-id-card" aria-hidden="true"> MR Print</i></button>
+                                        {% if request.user.is_superuser %}
+                                        <button class="btn btn-success" hx-post="{%url 'allreport'%}" hx-target=".abc"  hx-encoding="multipart/form-data" ><i class="fa fa-superpowers" aria-hidden="true">All Branch</i></button>
+                                        {%endif%}
                                     </div>
 
 
@@ -56,55 +79,7 @@
                 <!-- ============================================================== -->
 
                 <div class="abc">
-                    <table class="table table-bordered">
-      <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Branch Code</th>
-      <th scope="col">Branch Name</th>
-      <th scope="col">MR Number</th>
-      <th scope="col">MR Date</th>
-      <th scope="col">Class Insurance</th>
-      <th scope="col">Insured Name</th>
-      <th scope="col">Mode Of Payment</th>
-      <th scope="col">Cover Note No.</th>
-      <th scope="col">Policy No.</th>
-      <th scope="col">Addendum No.</th>
-      <th scope="col">Endorsement No.</th>
-      <th scope="col">Net</th>
-      <th scope="col">Vat</th>
-      <th scope="col">Stamp</th>
-      <th scope="col">Others</th>
-      <th scope="col">Gross</th>
-      <th scope="col">MR URL</th>
-    </tr>
-  </thead>
-      <tbody id="abc">
-{%for (mrSerialNumber, officeBranchCode, officeBranchName, mrNumber, mrDate, classInsurance, insuredName, insuredAddress, insuredMobile, insuredEmail, modeOfPayment, paymentDetail, coverNoteNumber, policyNumber, addendumNumber, endorsementNumber, netPremium, vat, stamp, others, totalPremium, chequeDrawnOn, chequeDate, depositDate, depositedToBank, depositedToBranch, depositedToAccountNumber, mfs, mfsAccountNumber, isCoInsurance, isLeader, financingBankName, financingBankAddress, financingBankEmail, financingBankMobile, isMultiDocument, multiDocuments, currency, leaderDocument, paymentReceivedFrom, serviceCharge, coInsurerPremiumAmount, bankGuaranteeNumber, requeston, responseon, response, mrURL, umpStatus, depositStatus) in myresults%}
 
-    <tr>
-<th scope="row" >{{forloop.counter}}</th>
-      <td>{{officeBranchCode}}</td>
-      <td>{{officeBranchName}}</td>
-      <td>{{mrNumber}}</td>
-      <td>{{mrDate}}</td>
-      <td>{{classInsurance}}</td>
-      <td>{{insuredName}}</td>
-      <td>{{modeOfPayment}}</td>
-      <td>{{coverNoteNumber}}</td>
-      <td>{{policyNumber}}</td>
-      <td>{{addendumNumber}}</td>
-      <td>{{endorsementNumber}}</td>
-      <td>{{netPremium}}</td>
-      <td>{{vat}}</td>
-      <td>{{stamp}}</td>
-      <td>{{others}}</td>
-      <td>{{totalPremium}}</td>
-      <td><a href="{{mrURL}}" target="_blank">{{mrURL}}</a></td>
-</tr>
-      {%endfor%}
-  </tbody>
-</table>
                 </div>
             </div>
 

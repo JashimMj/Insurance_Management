@@ -6,3 +6,4 @@ from.models import *
 
 admin.site.register(BranchInformationM)
 admin.site.register(UserProfileM)
+admin.site.register(chatM)
