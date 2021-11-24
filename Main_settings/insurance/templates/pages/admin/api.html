@@ -33,6 +33,7 @@
                 <span>{{x.user.username}}</span>
                 {%endfor%}
             </a>
+            <input class="form-control mr-sm-2" type="search" placeholder="PB-2021-25" aria-label="Search" name="mrserch" hx-get="{%url 'MRUMP'%}" hx-target="#abc" hx-trigger="keyup delay:400ms">
         </div>
         <div class="col-md-2">
             <a href="{%url 'maindashboard'%}" class="btn btn-warning">Back</a>

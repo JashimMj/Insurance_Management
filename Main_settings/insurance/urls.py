@@ -24,6 +24,7 @@ urlpatterns = [
     path('chat/search/', views.searchV,name='search'),
     path('admins/comment/<int:id>/', views.AcommentV,name='Acomment'),
     path('admins/update/<int:id>/', views.AcommenteditV,name='updatea'),
+    path('MRUMP/', views.UMP_APIMRV,name='MRUMP'),
 
 
 

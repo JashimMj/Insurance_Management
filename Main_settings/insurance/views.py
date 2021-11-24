@@ -778,6 +778,70 @@ def AcommenteditV(request,id=0):
     return render(request, 'pages/admin/report/chat.html', {'chat': chat})
 
 
+@login_required(login_url='/umpapi/login/')
+def UMP_APIMRV(request):
+    amr=request.GET.get('mrserch')
+    userprofile = UserProfileM.objects.filter(id=request.user.id)
+    cnx = cx_Oracle.connect('jashim/jashim@//localhost:1521/orcl')
+    mycursor = cnx.cursor()
+    mycursor.execute("""BEGIN LOAD_MONEY_RECEIPT(); END;""")
+    cnx.commit()
+    mycursor.execute("""SELECT
+        mrSerialNumber,
+        officeBranchCode,
+        officeBranchName,
+        mrNumber,
+        mrDate,
+        classInsurance,
+        insuredName,
+        insuredAddress,
+        insuredMobile,
+        insuredEmail,
+        modeOfPayment,
+        paymentDetail ,
+        coverNoteNumber,
+        policyNumber,
+        addendumNumber,
+        endorsementNumber,
+        netPremium,
+        vat,
+        stamp,
+        others,
+        totalPremium,
+        chequeDrawnOn,
+        chequeDate,
+        depositDate,
+        depositedToBank,
+        depositedToBranch,
+        depositedToAccountNumber,
+        mfs,
+        mfsAccountNumber,
+        isCoInsurance,
+        isLeader,
+        financingBankName,
+        financingBankAddress,
+        financingBankEmail,
+        financingBankMobile,
+        isMultiDocument,
+        multiDocuments,
+        currency,
+        leaderDocument,
+        paymentReceivedFrom,
+        serviceCharge,
+        coInsurerPremiumAmount,
+        bankGuaranteeNumber,
+        requeston ,
+        responseon,
+        response,
+        mrURL,
+        umpStatus,
+        depositStatus from ump_mr where RESPONSE is null and mrNumber=:mr
+        """,[amr])
+    myresults = mycursor.fetchall()
+
+    return render(request,'pages/admin/apis.html',{'myresults':myresults,'companyName':companyName,'userprofile':userprofile})
+
+
 
 
 
